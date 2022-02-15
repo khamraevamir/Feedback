@@ -130,6 +130,14 @@
 }
 
 
+
+/* Main */
+
+.main {
+    max-width: 450px;
+}
+
+
 @media screen and (min-width: 0px) and (max-width: 576px) {
     .home_content .right img {
         width: 150px;

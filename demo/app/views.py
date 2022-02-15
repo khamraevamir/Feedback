@@ -4,9 +4,34 @@ from users.forms import CustomUserCreationForm
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError
 from users.forms import CustomUserCreationForm
+from . models import Feedback
 
 def index(request):
     return render(request, 'pages/index.html')
+
+
+def completed(request):
+    return render(request, 'success.html')
+
+
+def feedback(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        number = request.POST.get('number')
+        city = request.POST.get('city')
+
+        feedback = Feedback()
+        feedback.name = name
+        feedback.number = number
+        feedback.city = city
+
+        feedback.save()
+
+        return redirect('completed')
+
+
+
+
 
 
 def sign_in(request):

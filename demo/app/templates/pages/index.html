@@ -5,16 +5,45 @@
 {% block content %}
    <!-- Main -->
 
-  <div class="bg-light p-4 px-sm-3">
-      <div class="bg-white  p-4 rounded-1">
-         <h2 class="mt-0">Главная</h2>
+  <div class="bg-light min-vh-100 " style="background: rgb(255, 255, 255);">
+      <div class="bg-white main mx-auto ">
+         <img class="w-100" src="{% static 'images/main.jpeg' %}" alt="">
+         <div class="p-3">
+            <form action="{% url 'feedback' %}" method="POST">
+               {% csrf_token %}
+               <div class="input-field mb-3">
+                
+                  <input name="name" required placeholder="Имя Фамилия" type="text" class="input ">
+               </div>
+               <div class="input-field mb-3">
+                
+                  <input name="number" id="selector" required placeholder="Номер телефона" type="text" class="input ">
+               </div>
+               <div class="input-field mb-4">
+            
+                  <input name="city" placeholder="Город" type="text" class="input ">
+               </div>
+               
+               <!-- <p class="text-center my-4" style="text-transform: uppercase;">
+                  <b>"ЗАРЕГЕСТРИРОВАТЬСЯ"</b>
+                  <br>
+                  👇👇👇
+               </p> -->
+               <button class="btn btn-lg btn-blue rounded-1 w-100">Отправить</button>
+            </form>
+         </div>
          
       </div>
 
-      <div class="bg-white mt-4  p-4 rounded-1">
-         <h2 class="mt-0">Секция</h2>
-         
-      </div>
   </div>
-
+  <script type="text/javascript" src="https://unpkg.com/imask"></script>
+   <script>
+      var element = document.getElementById('selector');
+      console.log(element)
+      var maskOptions = {
+      mask: '+{998}(00)000-00-00'
+      };
+      var mask = IMask(element, maskOptions);
+   </script>
+  
 {% endblock %}
